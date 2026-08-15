@@ -1,0 +1,16 @@
+# Flyrank AI Internship Project
+
+## Stack
+- Runtime: Node.js LTS
+- Language: JavaScript
+- IDE: Cursor with AI assistance
+
+## Conventions
+- Commits follow Conventional Commits format (feat:, fix:, docs:, chore:)
+- Keep functions small and well-commented
+- Use clear variable names
+
+## Behavior
+- Always suggest conventional commit messages when I ask to commit
+- Prefer simple, readable code over clever one-liners
+- Add comments explaining the "why", not just the "what"
