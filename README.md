@@ -5,6 +5,15 @@ A project built during the Flyrank AI internship program, focused on AI-assisted
 ## About
 This repository documents my capstone project for the Flyrank AI internship track. The goal is to build real-world skills in AI-assisted development, clean code practices, and professional Git workflows.
 
+## Project
+
+FlyRank AI Frontend is a [one-line description of the product]. It helps [target user] do [primary outcome].
+
+**Planned features:**
+- Feature one
+- Feature two
+- Feature three
+
 ## Stack
 - **Runtime:** Node.js (LTS)
 - **Language:** JavaScript
