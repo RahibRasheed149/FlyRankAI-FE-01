@@ -7,12 +7,16 @@ This repository documents my capstone project for the Flyrank AI internship trac
 
 ## Project
 
-FlyRank AI Frontend is a [one-line description of the product]. It helps [target user] do [primary outcome].
+This is my personal frontend portfolio website, built during the 
+Flyrank AI internship program. It helps freelance clients and hiring 
+managers see my work and book a call to discuss their project.
 
 **Planned features:**
-- Feature one
-- Feature two
-- Feature three
+- Hero section with proof statement and call-to-action
+- Projects showcase with live demo and GitHub links
+- About section with skills and background
+- Contact form with validation for booking a call
+- Mobile responsive design
 
 ## Stack
 - **Runtime:** Node.js (LTS)
