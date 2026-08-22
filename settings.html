@@ -4,250 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings Form</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f4f7f6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .settings-container {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 480px;
-        }
-
-        h2 {
-            margin-bottom: 24px;
-            color: #333;
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 6px;
-            color: #555;
-            font-weight: 500;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            transition: border-color 0.2s ease;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #0066cc;
-        }
-
-        input.invalid {
-            border-color: red;
-        }
-
-        .error-message {
-            color: red;
-            font-size: 13px;
-            margin-top: 5px;
-            display: none;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: #0066cc;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-
-        button:hover {
-            background-color: #0052a3;
-        }
-
-        .success-message {
-            margin-top: 20px;
-            padding: 12px;
-            background-color: #d4edda;
-            color: #155724;
-            border-radius: 4px;
-            text-align: center;
-            border: 1px solid #c3e6cb;
-            display: none;
-        }
-
-        /* Mobile responsiveness handled by width: 100% and max-width: 480px */
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="settings-container">
-        <h2>Settings</h2>
+        <h2>User Settings</h2>
         <form id="settingsForm" novalidate>
+            <!-- Full Name Field -->
             <div class="form-group">
                 <label for="fullName">Full Name</label>
-                <input type="text" id="fullName" name="fullName" placeholder="John Doe">
-                <div class="error-message" id="fullNameError"></div>
+                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name">
+                <span class="error-message" id="fullNameError"></span>
             </div>
 
+            <!-- Email Field -->
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="email@example.com">
-                <div class="error-message" id="emailError"></div>
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+                <span class="error-message" id="emailError"></span>
             </div>
 
+            <!-- Password Field -->
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Min. 8 characters">
-                <div class="error-message" id="passwordError"></div>
+                <label for="password">New Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter new password">
+                <span class="error-message" id="passwordError"></span>
             </div>
 
-            <button type="submit">Save Settings</button>
-            <div id="successMessage" class="success-message">Settings saved!</div>
+            <!-- Confirm Password Field -->
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your new password">
+                <span class="error-message" id="confirmPasswordError"></span>
+            </div>
+
+            <!-- Preferences -->
+            <div class="form-group">
+                <label for="theme">Theme Preference</label>
+                <select id="theme" name="theme">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                    <option value="system">System Default</option>
+                </select>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="notifications" name="notifications" checked>
+                <label for="notifications">Enable email notifications</label>
+            </div>
+
+            <button type="submit" class="submit-btn">Save Settings</button>
+            <div id="successMessage" class="success-message">Settings saved successfully!</div>
         </form>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const form = document.getElementById("settingsForm");
-            
-            const fullName = document.getElementById("fullName");
-            const email = document.getElementById("email");
-            const password = document.getElementById("password");
-            
-            const fullNameError = document.getElementById("fullNameError");
-            const emailError = document.getElementById("emailError");
-            const passwordError = document.getElementById("passwordError");
-            
-            const successMessage = document.getElementById("successMessage");
-
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            function showError(input, errorElement, message) {
-                input.classList.add("invalid");
-                errorElement.textContent = message;
-                errorElement.style.display = "block";
-            }
-
-            function clearError(input, errorElement) {
-                input.classList.remove("invalid");
-                errorElement.style.display = "none";
-                errorElement.textContent = "";
-            }
-
-            function validateFullName() {
-                const val = fullName.value.trim();
-                if (!val) {
-                    return "Full Name is required.";
-                } else if (val.length < 2) {
-                    return "Full Name must be at least 2 characters.";
-                }
-                return null;
-            }
-
-            function validateEmail() {
-                const val = email.value.trim();
-                if (!val) {
-                    return "Email is required.";
-                } else if (!emailPattern.test(val)) {
-                    return "Please enter a valid email address.";
-                }
-                return null;
-            }
-
-            function validatePassword() {
-                const val = password.value;
-                if (!val) {
-                    return "Password is required.";
-                } else if (val.length < 8) {
-                    return "Password must be at least 8 characters.";
-                }
-                return null;
-            }
-
-            // Real-time error clearing when user fixes input
-            function setupClearErrorOnInput(input, errorElement, validatorFn) {
-                input.addEventListener("input", () => {
-                    // Only run if there is currently an error shown
-                    if (input.classList.contains("invalid")) {
-                        const errorMsg = validatorFn();
-                        // If it becomes valid, clear the error
-                        if (!errorMsg) {
-                            clearError(input, errorElement);
-                        } else {
-                            // Optionally, we could update the error live, but requirement says:
-                            // "Error message disappears when the field becomes valid"
-                            // So we just check if valid.
-                        }
-                    }
-                });
-            }
-
-            setupClearErrorOnInput(fullName, fullNameError, validateFullName);
-            setupClearErrorOnInput(email, emailError, validateEmail);
-            setupClearErrorOnInput(password, passwordError, validatePassword);
-
-            form.addEventListener("submit", (e) => {
-                e.preventDefault();
-                successMessage.style.display = "none";
-
-                const fullNameMsg = validateFullName();
-                const emailMsg = validateEmail();
-                const passwordMsg = validatePassword();
-
-                let isValid = true;
-
-                if (fullNameMsg) {
-                    showError(fullName, fullNameError, fullNameMsg);
-                    isValid = false;
-                } else {
-                    clearError(fullName, fullNameError);
-                }
-
-                if (emailMsg) {
-                    showError(email, emailError, emailMsg);
-                    isValid = false;
-                } else {
-                    clearError(email, emailError);
-                }
-
-                if (passwordMsg) {
-                    showError(password, passwordError, passwordMsg);
-                    isValid = false;
-                } else {
-                    clearError(password, passwordError);
-                }
-
-                if (isValid) {
-                    successMessage.style.display = "block";
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
 
