@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahib | Frontend Developer</title>
+    <style>
+        /* Base Styling */
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --bg-light: #f3f4f6;
+            --white: #ffffff;
+            --border: #e5e7eb;
+            --error: #dc2626;
+            --success: #166534;
+            --success-bg: #dcfce7;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            color: var(--text-main);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* 1. Hero Section */
+        .hero {
+            background-color: var(--bg-light);
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+        }
+
+        /* 2. Project Section */
+        .project-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .project-img {
+            background-color: var(--border);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-weight: bold;
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-content p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        /* 3. Bio Section */
+        .bio {
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        .bio-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .bio-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        /* 4. Contact Section */
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .error-message {
+            color: var(--error);
+            font-size: 0.85rem;
+            margin-top: 6px;
+            display: none;
+        }
+
+        .form-group input.invalid,
+        .form-group textarea.invalid {
+            border-color: var(--error);
+        }
+
+        .success-message {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--success-bg);
+            color: var(--success);
+            border-radius: 6px;
+            text-align: center;
+            display: none;
+            font-weight: 500;
+        }
+
+        .btn-submit {
+            width: 100%;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--text-main);
+            color: var(--bg-light);
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero { padding: 80px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Hi, I'm Rahib. I build websites that help your business grow.</h1>
+            <p>I design and build professional, hassle-free websites that attract more customers so you can focus on running your business.</p>
+            <a href="#contact" class="btn">Book a Call</a>
+        </div>
+    </section>
+
+    <!-- 2. Project Section -->
+    <section id="work" class="project">
+        <div class="container">
+            <h2 class="section-title">My Recent Work</h2>
+            <div class="project-card">
+                <div class="project-img">Settings Form Preview</div>
+                <div class="project-content">
+                    <h3>Secure Settings Dashboard</h3>
+                    <p>A highly responsive settings component built using AI-assisted development. It features real-time validation to ensure your customers' data is collected safely and accurately.</p>
+                    <a href="settings.html" class="btn btn-outline" target="_blank">View Live Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Bio Section -->
+    <section id="about" class="bio">
+        <div class="container">
+            <div class="bio-content">
+                <h2 class="section-title">About Me</h2>
+                <p>I'm a frontend developer based in Lahore, currently honing my skills as an intern at <strong>Flyrank AI</strong>.</p>
+                <p>My goal is to make getting your business online completely painless. You run a business, not a tech company. I handle the design and coding (using reliable tools like HTML, CSS, and JavaScript), and I explain all the technical details in plain English.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Discuss Your Project</h2>
+            <div class="contact-form">
+                <form id="contactForm" novalidate>
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" placeholder="John Doe">
+                        <div class="error-message" id="nameError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" placeholder="john@example.com">
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Project Details</label>
+                        <textarea id="message" rows="4" placeholder="Tell me about your business..."></textarea>
+                        <div class="error-message" id="messageError"></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-submit">Book a Call</button>
+                    <div class="success-message" id="successMessage">Thank you! I will be in touch shortly.</div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Rahib. Built with HTML, CSS, & JS.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("contactForm");
+            const nameInput = document.getElementById("name");
+            const emailInput = document.getElementById("email");
+            const messageInput = document.getElementById("message");
+            
+            const nameError = document.getElementById("nameError");
+            const emailError = document.getElementById("emailError");
+            const messageError = document.getElementById("messageError");
+            const successMessage = document.getElementById("successMessage");
+            
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            function showError(input, errorEl, message) {
+                input.classList.add("invalid");
+                errorEl.textContent = message;
+                errorEl.style.display = "block";
+            }
+
+            function clearError(input, errorEl) {
+                input.classList.remove("invalid");
+                errorEl.style.display = "none";
+            }
+
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                let isValid = true;
+                successMessage.style.display = "none";
+
+                // Validate Name
+                if (nameInput.value.trim().length < 2) {
+                    showError(nameInput, nameError, "Please enter your name.");
+                    isValid = false;
+                } else {
+                    clearError(nameInput, nameError);
+                }
+
+                // Validate Email
+                if (!emailPattern.test(emailInput.value.trim())) {
+                    showError(emailInput, emailError, "Please enter a valid email.");
+                    isValid = false;
+                } else {
+                    clearError(emailInput, emailError);
+                }
+
+                // Validate Message
+                if (messageInput.value.trim().length < 5) {
+                    showError(messageInput, messageError, "Please provide some project details.");
+                    isValid = false;
+                } else {
+                    clearError(messageInput, messageError);
+                }
+
+                if (isValid) {
+                    successMessage.style.display = "block";
+                    form.reset();
+                }
+            });
+
+            // Clear errors on input
+            [nameInput, emailInput, messageInput].forEach(input => {
+                input.addEventListener("input", function() {
+                    this.classList.remove("invalid");
+                    this.nextElementSibling.style.display = "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
